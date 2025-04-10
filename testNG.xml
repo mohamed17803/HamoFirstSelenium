@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite">
+    <parameter name="browser" value="chrome" />
+
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg" />
+    </listeners>
+
+    <test name="Regression Test in chrome">
+        <classes>
+            <class name="testsPackage.RegisterTest">
+                <methods>
+                    <include name="RegisterFeatureTest" />
+                </methods>
+            </class>
+            <class name="testsPackage.LoginTest">
+                <methods>
+                    <include name="LoginFeatureTest" />
+                </methods>
+            </class>
+            <class name="testsPackage.AddtoCartTest">
+                <methods>
+                    <include name="AddingProductFeature" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
