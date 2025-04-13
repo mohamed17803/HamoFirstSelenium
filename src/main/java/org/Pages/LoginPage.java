@@ -30,7 +30,8 @@ public class LoginPage {
     private final By LoginButton = By.cssSelector("input[class=\"btn btn-primary\"]");
     private final By LoggedInMessage = By.xpath("//a[contains(text(), 'Edit your account information')]"); // Example of an element to verify successful login
 
-   // Actions
+
+    // Actions
 
     // Method to Navigate to URL
     @Step("User navigate to Home page")
@@ -58,9 +59,10 @@ public class LoginPage {
     }
 
 
-    public LoginPage ClickLogin(){
+    public LoginPage ClickLogin() throws InterruptedException {
 
         driver.findElement(LoginButton).click();
+        Thread.sleep(3000);
         return this; }
 
 

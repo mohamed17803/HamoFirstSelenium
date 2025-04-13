@@ -1,7 +1,6 @@
 package testsPackage;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Step;
+import io.qameta.allure.*;
 import io.qameta.allure.testng.AllureTestNg;
 import org.Pages.AddToCart;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +10,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 @Listeners({AllureTestNg.class})
+
+@Epic("Shopping Cart Operations")
+@Story("Add items to the shopping cart and verify correct product details and quantities")
+@Severity(SeverityLevel.CRITICAL)
+
 
 public class AddtoCartTest {
     private WebDriver driver;

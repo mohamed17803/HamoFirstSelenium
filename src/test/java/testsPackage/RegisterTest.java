@@ -1,8 +1,7 @@
 package testsPackage;
 
 import data.RegisterData;
-import io.qameta.allure.Description;
-import io.qameta.allure.Step;
+import io.qameta.allure.*;
 import org.Pages.RegisterPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +11,11 @@ import org.testng.annotations.Test;
 import utils.JsonUtils;
 import io.qameta.allure.testng.AllureTestNg;
 import org.testng.annotations.Listeners;
+
+@Epic("Product Search Functionality")
+@Story("Search for products using keywords and validate relevant results")
+@Severity(SeverityLevel.BLOCKER)
+
 
 @Listeners({AllureTestNg.class})
 public class RegisterTest {
