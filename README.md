@@ -57,7 +57,12 @@ Run Tests by running the testNg.xml
 View Allure Report Using Terminal
 
 allure serve target/allure-results
+
+
 📸 Sample Test Output (Allure Report)
+
+
+
 https://www.linkedin.com/feed/update/urn:li:activity:7317295681436639232/
 
 
