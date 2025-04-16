@@ -73,9 +73,7 @@ Feel free to connect:
 
 📧 Email: mohameddsayedd17@gmail.com
 
-🔗 LinkedIn
-
-💻 GitHub
+🔗 LinkedIn : https://www.linkedin.com/in/mohamed-sayed-1bab5829b/
 
 “Quality is never an accident; it is always the result of intelligent effort.” – John Ruskin
 
