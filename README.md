@@ -51,7 +51,7 @@ Navigate to Project Folder
 
 
 cd HamoFirstSelenium
-Run Tests by running the testNg.xml 
+Run Tests by running the testNG.xml 
 
 
 View Allure Report Using Terminal
