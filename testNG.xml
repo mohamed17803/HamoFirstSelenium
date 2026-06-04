@@ -26,6 +26,9 @@
                 </methods>
             </class>
 
+            <!-- Cucumber Login BDD Scenario -->
+            <class name="runners.LoginCucumberTest" />
+
             <!-- Add to Cart Test -->
             <class name="testsPackage.AddtoCartTest">
                 <methods>

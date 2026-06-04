@@ -15,7 +15,7 @@ public class RegisterPage {
     // Locators
     private final By DropDownToggle = By.xpath("//span[@class=\"caret\"]");
     private final By RegisterOption = By.xpath("//a[@href='https://awesomeqa.com/ui/index.php?route=account/register']");
-    private final By FirstNameField = By.cssSelector("input[id*='input-firstname']");
+        private final By FirstNameField = By.cssSelector("input[id*='input-firstname']");
     private final By LastNameField = By.cssSelector("input[name*='lastname']");
     private final By EmailTextField = By.cssSelector("input[id*='email']");
     private final By TelephoneTextField = By.cssSelector("input[id*='input-telephone']");
