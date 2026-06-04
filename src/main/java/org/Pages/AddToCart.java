@@ -3,6 +3,7 @@ package org.Pages;
 import io.qameta.allure.Step;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -72,7 +73,11 @@ public class AddToCart {
         @Step("Open the Shopping Cart")
         public void ShoppingCartView(){
 
-        driver.findElement(ShoppingCart).click();
+        WebElement element = driver.findElement(By.cssSelector(
+            "a[href='https://awesomeqa.com/ui/index.php?route=checkout/cart'] span[class='hidden-xs hidden-sm hidden-md']"
+        ));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element);
         driver.findElement(ItemModel).isDisplayed() ;
 
         }
