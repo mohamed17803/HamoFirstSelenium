@@ -2,6 +2,7 @@
 
     import io.qameta.allure.Step;
     import org.openqa.selenium.By;
+    import org.openqa.selenium.JavascriptExecutor;
     import org.openqa.selenium.WebDriver;
     import org.openqa.selenium.WebElement;
     import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -64,7 +65,9 @@
             List<By> ItemHearts = List.of(ItemHeartOne, ItemHeartTwo, ItemThree);
 
             for (int i = 0; i < ItemHearts.size(); i++) {
-                driver.findElement(ItemHearts.get(i)).click();
+                WebElement element = driver.findElement(ItemHearts.get(i));
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].click();", element);
                 System.out.println("Clicked item " + (i + 1));
 
             }
