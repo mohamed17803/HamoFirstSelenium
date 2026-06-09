@@ -385,8 +385,6 @@ Tests use Allure annotations for rich reporting:
 
 ✅ Execution Timeline
 
-✅ Screenshots
-
 ---
 
 # 👨‍💻 Author
