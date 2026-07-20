@@ -73,9 +73,7 @@ public class AddToCart {
         @Step("Open the Shopping Cart")
         public void ShoppingCartView(){
 
-        WebElement element = driver.findElement(By.cssSelector(
-            "a[href='https://awesomeqa.com/ui/index.php?route=checkout/cart'] span[class='hidden-xs hidden-sm hidden-md']"
-        ));
+        WebElement element = driver.findElement(ShoppingCart);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
         driver.findElement(ItemModel).isDisplayed() ;
