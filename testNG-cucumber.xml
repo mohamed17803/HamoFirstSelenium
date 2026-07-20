@@ -9,8 +9,8 @@
 
     <test name="Cucumber Regression Test in Chrome">
         <classes>
-            <class name="runners.LoginCucumberTest" />
             <class name="runners.RegisterCucumberTest" />
+            <class name="runners.LoginCucumberTest" />
             <class name="runners.AddToCartCucumberTest" />
             <class name="runners.WishlistCucumberTest" />
             <class name="runners.SearchCucumberTest" />
