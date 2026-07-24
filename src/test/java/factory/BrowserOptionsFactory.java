@@ -31,8 +31,6 @@ public class BrowserOptionsFactory {
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--disable-gpu");
         options.addArguments("--disable-popup-blocking");
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--proxy-server=direct://");
@@ -46,6 +44,15 @@ public class BrowserOptionsFactory {
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--headless=new");
         options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--ignore-certificate-errors");
+        options.addArguments("--proxy-server=direct://");
+        options.addArguments("--proxy-bypass-list=*");
 
         return options;
     }
