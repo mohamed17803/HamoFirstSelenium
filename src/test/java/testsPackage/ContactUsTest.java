@@ -4,10 +4,6 @@ import data.ContactUsData;
 import data.RegisterData;
 import io.qameta.allure.*;
 import org.Pages.ContactUsFeature;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.JsonUtils;
 
@@ -15,14 +11,8 @@ import utils.JsonUtils;
 @Story("Submit inquiry through contact form and validate message delivery confirmation")
 @Severity(SeverityLevel.MINOR)
 
-public class ContactUsTest {
+public class ContactUsTest extends BaseTest {
 
-    private WebDriver driver;
-    @BeforeMethod
-    public void setup() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
     @Test(description = "Check if user can use the contact us feature")
     public void ContactUsCheck() throws InterruptedException {
 
@@ -49,21 +39,4 @@ public class ContactUsTest {
                 .ValidateMessage(contactUsData.getConfirmationMessage());
 
     }
-
-
-
-
-
-
-
-
-    @AfterMethod
-    @Description("Close the browser after the Test")
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-
-    }
-
 }

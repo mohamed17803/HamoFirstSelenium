@@ -3,17 +3,10 @@ package testsPackage;
 import data.RegisterData;
 import io.qameta.allure.*;
 import org.Pages.RegisterPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.JsonUtils;
 import io.qameta.allure.testng.AllureTestNg;
 import org.testng.annotations.Listeners;
-
-import java.time.Duration;
 
 @Epic("Product Search Functionality")
 @Story("Search for products using keywords and validate relevant results")
@@ -21,26 +14,7 @@ import java.time.Duration;
 
 
 @Listeners({AllureTestNg.class})
-public class RegisterTest {
-    private WebDriver driver;
-
-    @BeforeMethod
-    public void setup() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--proxy-server=direct://");
-        options.addArguments("--proxy-bypass-list=*");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--ignore-certificate-errors");
-
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts()
-              .pageLoadTimeout(Duration.ofSeconds(60));
-    }
-
+public class RegisterTest extends BaseTest {
 
     @Test(description = "Validate if the user can sign up using valid data")
     @Step("Validate if the user can sign up")
@@ -68,14 +42,6 @@ public class RegisterTest {
                     .ClickContinue();
         } else {
             System.out.println(" Failed to load registration data from JSON file.");
-        }
-    }
-
-    @AfterMethod
-    @Description("Close the browser after the Test")
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
         }
     }
 }

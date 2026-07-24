@@ -5,10 +5,6 @@ import data.SearchData;
 import io.qameta.allure.*;
 
 import org.Pages.SearchFeature;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.JsonUtils;
 
@@ -17,16 +13,7 @@ import utils.JsonUtils;
 @Severity(SeverityLevel.BLOCKER)
 
 
-public class SearchFeatureTest {
-
-
-    private WebDriver driver;
-
-    @BeforeMethod
-    public void setup() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+public class SearchFeatureTest extends BaseTest {
 
     @Test(description = "Validate if the user can search for a product ")
     @Step("Check Using MacBook")
@@ -48,19 +35,5 @@ public class SearchFeatureTest {
 
 
 
-    }
-
-
-
-
-
-
-
-    @AfterMethod
-    @Description("Close the browser after the Test")
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 }

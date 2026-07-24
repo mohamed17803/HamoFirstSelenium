@@ -70,14 +70,14 @@ public class AddToCart {
 
         return this;
     }
-        @Step("Open the Shopping Cart")
-        public void ShoppingCartView(){
-
+    @Step("Open the Shopping Cart")
+    public void ShoppingCartView(){
         WebElement element = driver.findElement(ShoppingCart);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
-        driver.findElement(ItemModel).isDisplayed() ;
 
-        }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ItemModel));
+    }
 
 }
