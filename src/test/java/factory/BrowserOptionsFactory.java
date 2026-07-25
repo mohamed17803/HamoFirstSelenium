@@ -5,6 +5,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class BrowserOptionsFactory {
 
     public static MutableCapabilities getOptions(String browser) {
@@ -58,10 +62,15 @@ public class BrowserOptionsFactory {
         options.addArguments("--no-first-run");
         options.addArguments("--no-default-browser-check");
         options.addArguments("--disable-background-networking");
-        // Unique profile dir per run avoids profile-lock conflicts when
-        // Chrome/Edge/Firefox run in parallel (testNG.xml uses parallel="tests")
-        options.addArguments("--user-data-dir=" + System.getProperty("java.io.tmpdir")
-                + "edge-profile-" + System.nanoTime());
+
+        // Unique, reliably-separated profile dir per run — avoids profile-lock
+        // conflicts when Chrome/Edge/Firefox run in parallel (testNG.xml parallel="tests")
+        try {
+            Path edgeProfile = Files.createTempDirectory("edge-profile-");
+            options.addArguments("--user-data-dir=" + edgeProfile.toAbsolutePath());
+        } catch (IOException e) {
+            throw new RuntimeException("Could not create temp profile directory for Edge", e);
+        }
 
         return options;
     }
