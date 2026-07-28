@@ -1,0 +1,111 @@
+Started by user Mohamed Sayed
+Running as SYSTEM
+Building in workspace C:\ProgramData\Jenkins\.jenkins\workspace\RegressionSuite_12H
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\RegressionSuite_12H\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/mohamed17803/HamoFirstSelenium # timeout=10
+Fetching upstream changes from https://github.com/mohamed17803/HamoFirstSelenium
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.45.1.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/mohamed17803/HamoFirstSelenium +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision 5a9d1da267ac7adcbad47506fdac37242c34a3de (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 5a9d1da267ac7adcbad47506fdac37242c34a3de # timeout=10
+Commit message: "Ready"
+ > git.exe rev-list --no-walk 5a9d1da267ac7adcbad47506fdac37242c34a3de # timeout=10
+[RegressionSuite_12H] $ cmd /c call C:\Users\Express\AppData\Local\Temp\jenkins2926653871009395845.bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\RegressionSuite_12H>mvn clean test -Dsurefire.suiteXmlFiles=testng.xml 
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.firstSeleniumHAMO:HamoSelenium:jar:1.0-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.testng:testng:jar -> duplicate declaration of version 7.10.2 @ line 49, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -----------------< org.firstSeleniumHAMO:HamoSelenium >-----------------
+[INFO] Building HamoSelenium 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ HamoSelenium ---
+[INFO] Deleting C:\ProgramData\Jenkins\.jenkins\workspace\RegressionSuite_12H\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ HamoSelenium ---
+[INFO] skip non existing resourceDirectory C:\ProgramData\Jenkins\.jenkins\workspace\RegressionSuite_12H\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ HamoSelenium ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to C:\ProgramData\Jenkins\.jenkins\workspace\RegressionSuite_12H\target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ HamoSelenium ---
+[INFO] Copying 10 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ HamoSelenium ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 27 source files to C:\ProgramData\Jenkins\.jenkins\workspace\RegressionSuite_12H\target\test-classes
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ HamoSelenium ---
+[INFO] Using auto detected provider org.apache.maven.surefire.testng.TestNGProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running TestSuite
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+Navigating to URL...
+Searching for product...
+Waiting for item...
+Clicked item 1
+Clicked item 2
+Clicked item 3
+clicked the tab
+Item 1 is visible in the wishlist.
+Item 2 is visible in the wishlist.
+Item 3 is visible in the wishlist.
+Navigating to URL...
+Clicked item 1
+Clicked item 2
+Clicked item 3
+Searching for product...
+Waiting for item...
+clicked the tab
+Item 1 is visible in the wishlist.
+Item 2 is visible in the wishlist.
+Item 3 is visible in the wishlist.
+Navigating to URL...
+Searching for product...
+Waiting for item...
+Clicked item 1
+Clicked item 2
+Clicked item 3
+clicked the tab
+Item 1 is visible in the wishlist.
+Item 2 is visible in the wishlist.
+Item 3 is visible in the wishlist.
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 81.69 s -- in TestSuite
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:30 min
+[INFO] Finished at: 2026-07-27T15:34:29+03:00
+[INFO] ------------------------------------------------------------------------
+[RegressionSuite_12H] $ C:\ProgramData\Jenkins\.jenkins\tools\ru.yandex.qatools.allure.jenkins.tools.AllureCommandlineInstallation\allure-2.34.0\bin\allure.bat generate C:\ProgramData\Jenkins\.jenkins\workspace\RegressionSuite_12H\target\allure-results -c -o C:\ProgramData\Jenkins\.jenkins\workspace\RegressionSuite_12H\allure-report
+Report successfully generated to C:\ProgramData\Jenkins\.jenkins\workspace\RegressionSuite_12H\allure-report
+Allure report was successfully generated.
+Creating artifact for the build.
+Artifact was added to the build.
+Finished: SUCCESS
