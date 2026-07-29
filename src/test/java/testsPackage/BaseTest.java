@@ -14,7 +14,7 @@ public class BaseTest {
 
     @Parameters("browser")
     @BeforeMethod
-    public void setUp(@Optional("chrome") String browser) {
+    public void setUp( String browser) {
         DriverFactory.init(browser);
         driver = DriverFactory.get();
     }
@@ -25,3 +25,5 @@ public class BaseTest {
         DriverFactory.quit();
     }
 }
+
+//(@Optional("chrome")
