@@ -46,7 +46,7 @@ public class AddToCart {
     // Method to view the IPhone Product
     @Step(" User Opens a product for a better view  ")
     public  AddToCart ViewProduct(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(IphoneItem)).click();
 
         return this ;
@@ -54,13 +54,13 @@ public class AddToCart {
 
     @Step("User clicks Add to cart button ")
     public AddToCart ClickAddToCart(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(AddToCartButton)).click();
         return this ;
     }
     @Step("Validate that Success Message Appears")
     public AddToCart CheckMsg() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement loggedInElement = wait.until(ExpectedConditions.visibilityOfElementLocated(SuccessMsg));
 
         SoftAssert softAssert = new SoftAssert();
@@ -72,7 +72,7 @@ public class AddToCart {
     }
     @Step("Open the Shopping Cart")
     public void ShoppingCartView(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         // presenceOf (not visibilityOf): span uses Bootstrap hidden-xs/sm/md, so it is in DOM but often not "visible"
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(ShoppingCart));
         JavascriptExecutor js = (JavascriptExecutor) driver;

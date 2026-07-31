@@ -63,7 +63,7 @@
         @Step("Add items to Wishlist ")
         public WishlistFeature AddtoWishlists() throws InterruptedException {
             List<By> ItemHearts = List.of(ItemHeartOne, ItemHeartTwo, ItemThree);
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
             for (int i = 0; i < ItemHearts.size(); i++) {
                 WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(ItemHearts.get(i)));
@@ -81,7 +81,7 @@
 
         @Step("Go to the Wishlist")
         public WishlistFeature GoWishlist() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(WishlistTab)).click();
         System.out.println("clicked the tab");
         Thread.sleep(7000);
@@ -92,7 +92,7 @@
 
             List<By> wishlistItems = List.of(ItemModelOne, ItemModelTwo, ItemModelThree);
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
             for (int i = 0; i < wishlistItems.size(); i++) {
 

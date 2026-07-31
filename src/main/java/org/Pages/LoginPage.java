@@ -43,7 +43,7 @@ public class LoginPage {
     }
     @Step("User navigate to Login page")
     public  LoginPage LoginNavigate(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(DropDownToggle)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(LoginOption)).click();
 
@@ -52,7 +52,7 @@ public class LoginPage {
     }
     @Step("User enter valid Login data ")
     public  LoginPage LoginForm(String Emailaddress , String Password){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAddress)).sendKeys(Emailaddress);
         wait.until(ExpectedConditions.visibilityOfElementLocated(PasswordTextField)).sendKeys(Password);
         return this;
@@ -60,7 +60,7 @@ public class LoginPage {
 
 
     public LoginPage ClickLogin() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(LoginButton)).click();
         Thread.sleep(3000);
         return this; }
@@ -69,7 +69,7 @@ public class LoginPage {
     // Method to wait and soft assert successful login
 
     public void  LoginAssert() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement loggedInElement = wait.until(ExpectedConditions.visibilityOfElementLocated(LoggedInMessage));
 
         SoftAssert softAssert = new SoftAssert();

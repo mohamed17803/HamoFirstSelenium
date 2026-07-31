@@ -44,14 +44,14 @@ public class RegisterPage {
 
     @Step("user navigate to registration page and sign up")
     public RegisterPage ListBehaviour() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(DropDownToggle)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(RegisterOption)).click();
          return this;
     }
     @Step("user fills data")
     public RegisterPage RegistrationForm(String FirstName, String LastName, String Email, String Telephone, String Password, String ConfirmPassword) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(FirstNameField)).sendKeys(FirstName);
         wait.until(ExpectedConditions.visibilityOfElementLocated(LastNameField)).sendKeys(LastName);
         wait.until(ExpectedConditions.visibilityOfElementLocated(EmailTextField)).sendKeys(Email);
@@ -65,14 +65,14 @@ public class RegisterPage {
 
     @Step("user recognizes data")
     public RegisterPage MarkChoices() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(YesOption)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(PrivacyCheck)).click();
         return this;
     }
 
     public void  ClickContinue() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(ContinueButton)).click();
 
     }

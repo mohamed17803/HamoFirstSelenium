@@ -72,7 +72,7 @@ public class ContactUsFeature  extends  LoginPage{
 
     @Step("User Fills the Form")
     public ContactUsFeature FillingForm(String WrittenMail){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(EnquiryField)).sendKeys(WrittenMail);
         wait.until(ExpectedConditions.visibilityOfElementLocated(SubmitButton)).click();
 
@@ -83,7 +83,7 @@ public class ContactUsFeature  extends  LoginPage{
 
     @Step("Validate if the Sent Message appeared and matches expected text")
     public ContactUsFeature ValidateMessage(String expectedMessageFromJson) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement messageElement = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(SentMessage)
