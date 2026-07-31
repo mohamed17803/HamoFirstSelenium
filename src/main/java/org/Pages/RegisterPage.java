@@ -3,6 +3,10 @@ package org.Pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class RegisterPage {
     // Initialize the driver
@@ -40,21 +44,20 @@ public class RegisterPage {
 
     @Step("user navigate to registration page and sign up")
     public RegisterPage ListBehaviour() {
-
-        driver.findElement(DropDownToggle).click();
-        driver.findElement(RegisterOption).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(DropDownToggle)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(RegisterOption)).click();
          return this;
     }
     @Step("user fills data")
     public RegisterPage RegistrationForm(String FirstName, String LastName, String Email, String Telephone, String Password, String ConfirmPassword) {
-
-
-        driver.findElement(FirstNameField).sendKeys(FirstName);
-        driver.findElement(LastNameField).sendKeys(LastName);
-        driver.findElement(EmailTextField).sendKeys(Email);
-        driver.findElement(TelephoneTextField).sendKeys(Telephone);
-        driver.findElement(PasswordField).sendKeys(Password);
-        driver.findElement(ConfirmPasswordField).sendKeys(ConfirmPassword);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(FirstNameField)).sendKeys(FirstName);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LastNameField)).sendKeys(LastName);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(EmailTextField)).sendKeys(Email);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(TelephoneTextField)).sendKeys(Telephone);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(PasswordField)).sendKeys(Password);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ConfirmPasswordField)).sendKeys(ConfirmPassword);
 
 
         return this;
@@ -62,15 +65,15 @@ public class RegisterPage {
 
     @Step("user recognizes data")
     public RegisterPage MarkChoices() {
-
-
-        driver.findElement(YesOption).click();
-        driver.findElement(PrivacyCheck).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(YesOption)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(PrivacyCheck)).click();
         return this;
     }
 
     public void  ClickContinue() {
-        driver.findElement(ContinueButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ContinueButton)).click();
 
     }
 }

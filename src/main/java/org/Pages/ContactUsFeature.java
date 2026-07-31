@@ -72,9 +72,9 @@ public class ContactUsFeature  extends  LoginPage{
 
     @Step("User Fills the Form")
     public ContactUsFeature FillingForm(String WrittenMail){
-
-        driver.findElement(EnquiryField).sendKeys(WrittenMail);
-        driver.findElement(SubmitButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(EnquiryField)).sendKeys(WrittenMail);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(SubmitButton)).click();
 
         return this ;
     }
@@ -97,7 +97,6 @@ public class ContactUsFeature  extends  LoginPage{
 
         return this;
     }
-
 
 
 

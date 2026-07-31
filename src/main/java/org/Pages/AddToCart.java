@@ -46,21 +46,21 @@ public class AddToCart {
     // Method to view the IPhone Product
     @Step(" User Opens a product for a better view  ")
     public  AddToCart ViewProduct(){
-
-    driver.findElement(IphoneItem).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(IphoneItem)).click();
 
         return this ;
     }
 
     @Step("User clicks Add to cart button ")
     public AddToCart ClickAddToCart(){
-
-        driver.findElement(AddToCartButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AddToCartButton)).click();
         return this ;
     }
     @Step("Validate that Success Message Appears")
     public AddToCart CheckMsg() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement loggedInElement = wait.until(ExpectedConditions.visibilityOfElementLocated(SuccessMsg));
 
         SoftAssert softAssert = new SoftAssert();
@@ -72,11 +72,12 @@ public class AddToCart {
     }
     @Step("Open the Shopping Cart")
     public void ShoppingCartView(){
-        WebElement element = driver.findElement(ShoppingCart);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        // presenceOf (not visibilityOf): span uses Bootstrap hidden-xs/sm/md, so it is in DOM but often not "visible"
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(ShoppingCart));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(ItemModel));
     }
 

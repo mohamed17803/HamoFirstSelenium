@@ -39,9 +39,9 @@ public class SearchFeature {
     @Step("User search for Macbook ")
     public SearchFeature UserSearch(String ProductName) {
         System.out.println("Searching for product...");
-
-        driver.findElement(SearchField).sendKeys(ProductName);
-        driver.findElement(SearchButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(SearchField)).sendKeys(ProductName);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(SearchButton)).click();
         return this ;
     }
 
@@ -49,10 +49,9 @@ public class SearchFeature {
     public void CheckItem(){
         System.out.println("Waiting for item...");
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement item = wait.until(ExpectedConditions.visibilityOfElementLocated(DesiredItem));
         Assert.assertTrue(item.isDisplayed(), " Desired product is not displayed on the page.");
 
     }
     }
-
