@@ -7,7 +7,7 @@
 Automated testing framework for the **AwesomeQA E-Commerce Application**
 
 ![Java](https://img.shields.io/badge/Java-21-orange)
-![Selenium](https://img.shields.io/badge/Selenium-4.46.0-green)
+![Selenium](https://img.shields.io/badge/Selenium-4.45.0-green)
 ![TestNG](https://img.shields.io/badge/TestNG-7.10.2-red)
 ![Cucumber](https://img.shields.io/badge/Cucumber-7.20.1-brightgreen)
 ![Maven](https://img.shields.io/badge/Maven-3.x-blue)
@@ -49,7 +49,7 @@ A comprehensive Selenium-based test automation framework for the **AwesomeQA** e
 | Tool               | Version | Purpose                                  |
 | ------------------- | ------- | ----------------------------------------- |
 | Java                | 21      | Primary language                         |
-| Selenium WebDriver  | 4.46.0  | Browser automation                       |
+| Selenium WebDriver  | 4.45.0  | Browser automation                       |
 | TestNG              | 7.10.2  | Test framework, parallel execution       |
 | Cucumber (BDD)      | 7.20.1  | Behavior-driven scenarios                |
 | Jackson             | 2.18.3  | JSON test data parsing                   |
@@ -225,6 +225,22 @@ JavascriptExecutor js = (JavascriptExecutor) driver;
 js.executeScript("arguments[0].click();", element);
 ```
 
+## 📘 Explicit Waits & Synchronization
+
+All page interactions use `WebDriverWait` with `ExpectedConditions` (5-second timeout) instead of relying on implicit waits or immediate `findElement()` calls — this prevents race conditions between page rendering and element lookup, especially under parallel 3-browser load or after browser auto-updates:
+
+```java
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).click();
+```
+
+For elements hidden via Bootstrap responsive classes (`hidden-xs`, `hidden-sm`, `hidden-md`), `presenceOfElementLocated` is used instead of `visibilityOfElementLocated` — the element is present in the DOM but intentionally not visually rendered — followed by a JavaScript click:
+
+```java
+WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+```
+
 ---
 
 # ⚙ Jenkins Integration
@@ -245,15 +261,20 @@ flowchart TD
     H --> I[Allure Report]
 ```
 
-## 📋 Jenkins Pipeline Configuration
+## 📋 Jenkins Configuration
 
-| Setting       | Value                                                |
-| -------------- | ----------------------------------------------------- |
-| Source         | GitHub — `mohamed17803/HamoFirstSelenium`            |
-| Build Command  | `mvn clean test -Dsurefire.suiteXmlFiles=testNG.xml` |
-| Trigger        | Every 12 hours (`H */12 * * *`)                      |
-| Service Account| Regular Windows user (not Local System — see above)  |
-| Report         | Allure plugin — reads `target/allure-results`        |
+**Primary job** (`RegressionSuite_12H`) — a Freestyle project, scheduled every 12 hours:
+
+| Setting        | Value                                                       |
+| --------------- | ------------------------------------------------------------ |
+| Job Type        | Freestyle project                                           |
+| Source          | GitHub — `mohamed17803/HamoFirstSelenium`                   |
+| Build Step      | Execute Windows batch command: `mvn clean test -Dsurefire.suiteXmlFiles=testNG.xml` |
+| Trigger         | Every 12 hours (`H */12 * * *`)                              |
+| Service Account | Regular Windows user (not Local System — see above)          |
+| Report          | Allure Jenkins Plugin — reads `target/allure-results`        |
+
+A reference **`Jenkinsfile`** is also included in this repo as Pipeline-as-Code, declaratively mirroring the same build steps (checkout, build & test, Allure report) with a built-in 15-minute timeout guard.
 
 # 🚀 Setup & Execution
 
@@ -304,6 +325,30 @@ Tests use Allure annotations for rich reporting:
 ✅ Pass/Fail History
 
 ✅ Execution Timeline per browser
+
+---
+
+# ⚠️ Known Limitations
+
+The application under test ([awesomeqa.com](https://awesomeqa.com/ui)) is a public demo/training e-commerce site with occasional instability — intermittent `net::ERR_CONNECTION_TIMED_OUT` or slow page responses can occur independent of this test suite's code. When this happens, the failure is environmental, not a defect in the automation framework itself. The Jenkins trend graph may occasionally show a red or yellow build for this reason; the underlying suite logic remains stable and reproducible.
+
+---
+
+### Sample Report
+
+**Overview — Build #614 (100% pass rate)**
+
+![Allure Overview](docs/allure-overview.png)
+
+18/18 test cases passed across Chrome, Edge, and Firefox in this run. The trend chart on the right tracks the last 20 Jenkins builds — the green bands are fully passing runs, the yellow spikes are runs affected by transient network/rate-limiting issues from the demo application under test rather than defects in the suite itself.
+
+**Suite breakdown — individual test case detail**
+
+![Allure Suites](docs/allure-suites.png)
+
+Each test case is broken down step-by-step (e.g. navigate → login → add to wishlist → verify), with execution time per step and full parameter visibility for data-driven runs.
+
+📄 [Full console output — Build #614](docs/logs/build-614.txt)
 
 ---
 
